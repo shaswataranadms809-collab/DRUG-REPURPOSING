@@ -63,7 +63,7 @@ While this computational framework provides strong, data-backed candidate molecu
 
 ## 🛠️ Computational Toolstack
 
-* **Data Analysis & Scripting:** R (DESeq2,KEGG), Python (PyMOL)
+* **Data Analysis & Scripting:** R (DESeq2,KEGG)
 * **Cheminformatics & Docking:** PyRx, AutoDock Vina, OpenBabel Suite
 * **Structural Visualization:** PyMOL, Prankweb
 * **Biological Databases:** NCBI GEO, RCSB Protein Data Bank, ZINC20 DrugBank
