@@ -1,0 +1,72 @@
+# Pathway Enrichment by KEGG using R
+# Install BiocManager if you haven't already
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+# Install clusterProfiler from Bioconductor
+BiocManager::install("clusterProfiler",update = FALSE)
+library(clusterProfiler)
+
+BiocManager::install("org.Hs.eg.db",update = FALSE)
+library(org.Hs.eg.db) # Assuming human sample data given the ENSG prefix
+
+# Convert Ensembl IDs to Entrez IDs for KEGG compliance
+gene_conversion <- bitr(spiking_genes$EnsemblID, 
+                        fromType = "ENSEMBL", 
+                        toType = "ENTREZID", 
+                        OrgDb = org.Hs.eg.db)
+# Check how many genes successfully converted
+nrow(gene_conversion)
+
+# Run the KEGG Pathway Enrichment Analysis
+kegg_enrich <- enrichKEGG(gene         = gene_conversion$ENTREZID,
+                          organism     = "hsa", # Human organism code
+                          pvalueCutoff = 0.05,
+                          pAdjustMethod = "BH")
+
+# Look for your specific viral/cytokine terms in the output table
+kegg_results <- as.data.frame(kegg_enrich)
+print(head(kegg_results[, c("Description", "GeneRatio", "p.adjust")]))
+
+# Plot the results to visualize the pathways
+dotplot(kegg_enrich, showCategory = 15, title = "Upregulated Pathways During Peak Infection")
+
+#Install pathview
+BiocManager::install("pathview",update = FALSE)
+library(pathview)
+
+# Extract your Entrez IDs from your earlier conversion step
+# pathview expects a named vector where values are fold changes, 
+# but just passing the IDs works perfectly to highlight them!
+fold_changes <- spiking_genes$log2FoldChange
+names(fold_changes) <- gene_conversion$ENTREZID[match(spiking_genes$EnsemblID, gene_conversion$ENSEMBL)]
+# Remove any NA names that failed to map
+fold_changes <- fold_changes[!is.na(names(fold_changes))]
+
+# Download and render the official KEGG diagram for Cytokine interactions
+# Save the dotplot directly to your Downloads
+ggsave("C:/Users/shasw/Downloads/kegg_dotplot_fixed.png", plot = my_plot, width = 10, height = 7, dpi = 300)
+
+# Tell pathview to export directly to your Downloads folder
+# (We use the 'kegg.dir' argument to redirect the output files)
+pathview(gene.data = fold_changes, 
+         pathway.id = "hsa04060", 
+         species = "hsa",
+         kegg.dir = "C:/Users/shasw/Downloads/")
+
+# assign it to pv.out
+pv.out <- pathview
+print(class(pv.out))
+# Extract the matrix containing the mapped gene nodes
+plot.data <- pv.out
+head(plot.data)
+# Create a vector of the specific genes in your 4 pairs 
+# (Replace these placeholders with your actual 8 gene symbols)
+# Store your specific target Entrez IDs as character strings
+target_entrez_ids <- c("6375", "2829", "85480", "3575", "64109", "3552", "3553", "3554", "8744", "3604")
+
+# Extract values from your vector securely using matching names
+matching_values <- fold_changes[names(fold_changes) %in% target_entrez_ids]
+
+# Print the absolute clean results
+print(matching_values)
