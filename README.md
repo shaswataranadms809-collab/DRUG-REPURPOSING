@@ -61,7 +61,7 @@ While this computational framework provides strong, data-backed candidate molecu
 
 ## 🛠️ Computational Toolstack
 
-* **Data Analysis & Scripting:** R (Bioconductor), Python (Matplotlib, Seaborn, Pandas)
+* **Data Analysis & Scripting:** R (Bioconductor), Python (PyMOL)
 * **Cheminformatics & Docking:** PyRx, AutoDock Vina, OpenBabel Suite
 * **Structural Visualization:** PyMOL, BIOVIA Discovery Studio Visualizer
-* **Biological Databases:** NCBI GEO, RCSB Protein Data Bank, DrugBank, ZINC20
+* **Biological Databases:** NCBI GEO, RCSB Protein Data Bank, ZINC20 DrugBank
