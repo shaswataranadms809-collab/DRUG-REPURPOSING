@@ -47,7 +47,7 @@ The raw docking profiles (`Drug_Energies.csv`) were evaluated by sorting the min
 
 ### Highlighted Findings
 
-High-Throughput Virtual Screening sorted 211 unique FDA compounds by thermodynamic stability. While complex molecules like Metocurine (-9.6 kcal/mol) and Fludarabine (-8.9 kcal/mol) showed high binding scores, physiological profiling eliminated them due to extreme neuromuscular toxicity and systemic cytotoxicity, respectively. Temafloxacin (DB01405) at (-9.0 kcal/mol) was selected as the primary therapeutic lead, providing computational validation that a fluoroquinolone core fits perfectly inside the pocket.
+High-Throughput Virtual Screening sorted 211 unique FDA compounds by thermodynamic stability. While complex molecules like **Metocurine (-9.6 kcal/mol)** and **Fludarabine (-8.9 kcal/mol)** showed high binding scores, physiological profiling eliminated them due to extreme neuromuscular toxicity and systemic cytotoxicity, respectively. **Temafloxacin (DB01405)** at (-9.0 kcal/mol) was selected as the primary therapeutic lead, providing computational validation that a fluoroquinolone core fits perfectly inside the pocket.
 
 ---
 
