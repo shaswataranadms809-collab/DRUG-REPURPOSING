@@ -59,9 +59,11 @@ While this computational framework provides strong, data-backed candidate molecu
 2. **Molecular Dynamics (MD) Simulations:** Running 100-nanosecond MD simulations (using GROMACS or AMBER) to test the stability of the drug-protein complex over time under realistic physiological conditions (simulating temperature, water box environment, and pressure).
 3. **In Vitro Validation:** Transitioning the top-scoring repurposing candidates into wet-lab validation, evaluating minimal inhibitory concentrations (MIC) against live *Haemophilus influenzae* cultures in vitro.
 
+---
+
 ## 🛠️ Computational Toolstack
 
 * **Data Analysis & Scripting:** R (DESeq2,KEGG), Python (PyMOL)
 * **Cheminformatics & Docking:** PyRx, AutoDock Vina, OpenBabel Suite
-* **Structural Visualization:** PyMOL, BIOVIA Discovery Studio Visualizer
+* **Structural Visualization:** PyMOL, Prankweb
 * **Biological Databases:** NCBI GEO, RCSB Protein Data Bank, ZINC20 DrugBank
